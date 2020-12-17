@@ -5,8 +5,7 @@ const MovieItemBlock = styled.div`
   display: flex;
   flex-direction: column;
   flex: none;
-  flex-basis: 305px;
-  height: 170px;
+  flex-basis: 50%;
   box-sizing: border-box;
   .item_area {
     display: flex;
@@ -17,34 +16,31 @@ const MovieItemBlock = styled.div`
     height: 100px;
   }
 `;
+
 const MovieItem = (props) => {
-  const {
-    id,
-    title,
-    link,
-    image,
-    subtitle,
-    pubDate,
-    actor,
-    userRating,
-  } = props;
+  const { id, title, image, subtitle, pubDate, actor, userRating } = props;
+  const DEFAULT_IMAGE = 'https://via.placeholder.com/70x100';
+  const poster = image === '' ? DEFAULT_IMAGE : image;
+
   return (
     <MovieItemBlock>
-      <div className="item_area" id={id}>
-        <div className="item_data">
-          <p>
-            <a href={link}>{title}</a>
-          </p>
-          <div>
-            <span>{subtitle}</span>
-          </div>
-          <div>
-            개봉 {pubDate} {userRating}
-          </div>
-          <div>출연 {actor}</div>
-        </div>
-        <div className="item_photo"></div>
-        <img src={image} alt={title} />
+      <div className="movie_area" id={id}>
+        <h3 className="movie_title">
+          <a href={id} target="_blank">
+            {title.replace(/<b>/gi, '').replace(/<\/b>/gi, '')}
+          </a>
+        </h3>
+        <p className="movie_subtitle">{subtitle}</p>
+        <p className="movie_rating">
+          <span>평점</span> {userRating}
+        </p>
+        <p className="movie_data">
+          <span>개봉</span> {pubDate}
+        </p>
+        <p className="movie_actor">
+          <span>출연</span> {actor}
+        </p>
+        <img src={poster} alt={title} />
       </div>
     </MovieItemBlock>
   );
