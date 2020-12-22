@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import BeatLoader from 'react-spinners/BeatLoader';
 import MovieSearch from './MovieSearch';
 import MovieItem from './MovieItem';
-import axios from 'axios';
+import { movieApi } from '../api';
 
 const MovieListBlock = styled.div`
   .movies_area {
@@ -41,18 +41,9 @@ const MovieList = () => {
   const [loading, setLoading] = useState(false);
 
   const search = async (searchValue) => {
-    const ID_KEY = ID_KEY;
-    const SECRET_KEY = SECRET_KEY;
-
     setLoading(true);
     try {
-      const response = await axios.get('/v1/search/movie.json', {
-        params: { query: searchValue, display: 20 },
-        headers: {
-          'X-Naver-Client-Id': ID_KEY,
-          'X-Naver-Client-Secret': SECRET_KEY,
-        },
-      });
+      const response = await movieApi.searchValue(searchValue);
       setMovies(response.data.items);
       setMovieDatas(response.data);
       setSearchMovie(searchValue);
@@ -67,7 +58,7 @@ const MovieList = () => {
   }
 
   if (!movies) {
-    return null;
+    return;
   }
   return (
     <MovieListBlock>
