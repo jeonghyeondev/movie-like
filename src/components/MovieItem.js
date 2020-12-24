@@ -5,7 +5,7 @@ const MovieItemBlock = styled.div`
   display: flex;
   flex-direction: column;
   flex: none;
-  flex-basis: 47%;
+  flex-basis: 460px;
   margin-top: 3%;
   box-sizing: border-box;
   background: #e8e8e8;

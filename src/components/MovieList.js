@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import axios from 'axios';
 import BeatLoader from 'react-spinners/BeatLoader';
 import MovieSearch from './MovieSearch';
 import MovieItem from './MovieItem';
-// import { movieApi } from '../api';
-import axios from 'axios';
 
 const MovieListBlock = styled.div`
   .movies_area {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    width: 980px;
   }
   .total_area {
     padding: 50px 0 20px;
@@ -25,7 +25,7 @@ const MovieListBlock = styled.div`
     font-size: 30px;
     color: #c0a789;
     text-align: center;
-    margin-top: 100px;
+    margin: 80px 0 20px;
   }
 `;
 
@@ -41,6 +41,31 @@ const MovieList = () => {
   const [searchMovie, setSearchMovie] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const ID_KEY = 'tTK3P0kQ0Hg7Bo_QleLw';
+      const SECRET_KEY = 'IEOluexD8z';
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          '/v1/search/movie.json?query=어벤져스',
+          {
+            headers: {
+              'X-Naver-Client-Id': ID_KEY,
+              'X-Naver-Client-Secret': SECRET_KEY,
+            },
+          },
+        );
+        setMovies(response.data.items);
+        setMovieDatas(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
   const search = async (searchValue) => {
     setLoading(true);
     try {
@@ -48,7 +73,7 @@ const MovieList = () => {
         params: { query: searchValue, display: 20 },
       });
       setMovies(response.data.items);
-      setMovieDatas(response.data);
+      setMovieDatas(response.data.items.length);
       setSearchMovie(searchValue);
     } catch (e) {
       console.log(e);
@@ -75,7 +100,7 @@ const MovieList = () => {
             <div className="total_area">
               <p>
                 <span>{searchMovie}</span> 검색 결과 입니다. Total{' '}
-                <span>{movieDatas.total}</span>개 입니다.
+                <span>{movieDatas}</span>개 입니다.
               </p>
             </div>
           ) : (
