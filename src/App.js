@@ -5,7 +5,7 @@ import MoviePage from './pages/MoviePage';
 const App = () => {
   return (
     <>
-      <Route path="/" component={MoviePage} />
+      <Route path="/movie-like" component={MoviePage} />
     </>
   );
 };

@@ -21,7 +21,7 @@ const MoviePage = () => {
   return (
     <MoviePageBlock>
       <h1>
-        <Link to="/">Movie Like</Link>
+        <Link to="/movie-like">Movie Like</Link>
       </h1>
       <MovieList />
     </MoviePageBlock>
