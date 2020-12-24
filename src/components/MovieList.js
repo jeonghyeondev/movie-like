@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import BeatLoader from 'react-spinners/BeatLoader';
 import MovieSearch from './MovieSearch';
 import MovieItem from './MovieItem';
-import { movieApi } from '../api';
+// import { movieApi } from '../api';
+import axios from 'axios';
 
 const MovieListBlock = styled.div`
   .movies_area {
@@ -43,7 +44,9 @@ const MovieList = () => {
   const search = async (searchValue) => {
     setLoading(true);
     try {
-      const response = await movieApi.searchValue(searchValue);
+      const response = await axios.get('http://localhost:3001/', {
+        params: { query: searchValue, display: 20 },
+      });
       setMovies(response.data.items);
       setMovieDatas(response.data);
       setSearchMovie(searchValue);
