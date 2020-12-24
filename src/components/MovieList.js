@@ -43,17 +43,12 @@ const MovieList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const ID_KEY = 'tTK3P0kQ0Hg7Bo_QleLw';
-      const SECRET_KEY = 'IEOluexD8z';
       setLoading(true);
       try {
         const response = await axios.get(
-          '/v1/search/movie.json?query=어벤져스',
+          'http://localhost:3001/query=어벤져스',
           {
-            headers: {
-              'X-Naver-Client-Id': ID_KEY,
-              'X-Naver-Client-Secret': SECRET_KEY,
-            },
+            params: { display: 20 },
           },
         );
         setMovies(response.data.items);
