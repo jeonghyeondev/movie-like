@@ -45,12 +45,9 @@ const MovieList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          'http://localhost:3001/query=어벤져스',
-          {
-            params: { display: 20 },
-          },
-        );
+        const response = await axios.get('http://localhost:3001/', {
+          params: { query: '어벤져스', display: 20 },
+        });
         setMovies(response.data.items);
         setMovieDatas(response.data);
       } catch (e) {
