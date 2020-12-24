@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieList from '../components/MovieList';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const MoviePageBlock = styled.div`
   max-width: 980px;
@@ -20,7 +21,7 @@ const MoviePage = () => {
   return (
     <MoviePageBlock>
       <h1>
-        <a href="/">Movie Like</a>
+        <Link to="/">Movie Like</Link>
       </h1>
       <MovieList />
     </MoviePageBlock>
