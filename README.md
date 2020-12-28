@@ -1,6 +1,6 @@
 # movie-like
 
-react movie search project
+react movie search project  
 네이버 api와 리액트를 사용한 영화 검색 페이지
 #react #styled-component #sass #express
 
