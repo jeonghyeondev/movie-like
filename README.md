@@ -1,7 +1,7 @@
 # movie-like
 
 react movie search project  
-네이버 api와 리액트를 사용한 영화 검색 페이지
+네이버 api와 리액트를 사용한 영화 검색 페이지  
 #react #styled-component #sass #express
 
 open url [https://kkkkkjjjjjh.github.io/movie-like](https://kkkkkjjjjjh.github.io/movie-like)
