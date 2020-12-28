@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# movie-like
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+react movie search project
+네이버 api와 리액트를 사용한 영화 검색 페이지
+#react #styled-component #sass #express
 
-## Available Scripts
+open url [https://kkkkkjjjjjh.github.io/movie-like](https://kkkkkjjjjjh.github.io/movie-like)
 
-In the project directory, you can run:
+## 폴더구조
 
-### `yarn start`
+api
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- api.js
+  components
+- MovieItem.js (아이템 컴포넌트)
+- MovieList.js (리스트 컴포넌트)
+- MovieSearch.js (검색 컴포넌트)
+  page
+- MoviePage.js (뷰 컴포넌트)
+  style
+- GlobalStyle.scss (기본 스타일)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+servers
 
-### `yarn test`
+- server.js (서버)
+  서버가동 `npm server.js`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API 기본 정보 - NAVER OPEN API
 
-### `yarn build`
+https://openapi.naver.com/v1/search/movie.json
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 요청 변수
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+query(필수) - 검색을 원하는 질의
+display(선택) - 검색 결과 출력 건수(기본 20개 노출)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 출력 결과
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+items - items 속성으로 표현된 개별 검색 결과
+title - 영화의 제목
+subtitle - 영화 소제목
+image - 썸네일 이미지의 URL
+link - 영화의 하이퍼텍스트 link
+pubDate - 영화 제작연도
+director - 영화의 감독
+actor - 영화의 출연 배우
+userRating - 유저들의 평점
