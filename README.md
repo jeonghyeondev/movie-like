@@ -27,8 +27,6 @@ servers
 - server.js (서버)
 ```
 
-## 서버가동 `npm server.js`
-
 ## API 기본 정보 - NAVER OPEN API
 
 https://openapi.naver.com/v1/search/movie.json
@@ -53,3 +51,7 @@ director - 영화의 감독
 actor - 영화의 출연 배우
 userRating - 유저들의 평점
 ```
+
+## 서버가동
+
+### `npm server.js`
